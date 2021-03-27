@@ -13,6 +13,7 @@ last_month = 867884
 largest_increase = 0
 largest_loss = 0
 
+#Have python run through the csv using a for loop to grab the data
 with open('C:/Users/rwbut/python-challenge/PyBank/Resources/budget_data.csv') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     header = next(csvreader)
@@ -33,10 +34,14 @@ with open('C:/Users/rwbut/python-challenge/PyBank/Resources/budget_data.csv') as
         last_month_change = current_change
 average_change = format((total_change/(total_months - 1)),".2f")
 
-print("Financial Analysis")
-print("---------------------------")
-print(f"Total Months: {total_months}")
-print(f"Total: ${total}")
-print(f"Average Change: ${average_change}")
-print(f"Greatest Increase in Profits: {greatest_increase_month} (${greatest_increase_value})")
-print(f"Greatest Decrease in Profits: {largest_loss_month} (${largest_loss_value})")
+#set a variable for your finacial analysis to make printing a writing more brief
+financial_analysis = f"Financial Analysis\n---------------------------\nTotal Months: {total_months}\nTotal: ${total}\nAverage Change: ${average_change}\nGreatest Increase in Profits: {greatest_increase_month} (${greatest_increase_value})\nGreatest Decrease in Profits: {largest_loss_month} (${largest_loss_value})"
+
+#write analysis to a txt file in the analysis folder
+f = open('C:/Users/rwbut/Python-challenge/PyBank/analysis/Financial_Analysis.txt', 'w')
+
+f.write(financial_analysis)
+f.close
+
+#print analysis in the terminal 
+print(financial_analysis)
